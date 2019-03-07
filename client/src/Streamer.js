@@ -16,6 +16,7 @@ class Streamer extends Component {
     data: [],
     intervalIsSet: false,
     streamer:'',
+    streamerId:0,
     teste: 'no timestamp yet',
     showStream: false,
     textButton: "Let's Watch"

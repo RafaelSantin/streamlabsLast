@@ -3,10 +3,40 @@ import React, { Component } from "react";
 
 
 class Header extends Component {
-  constructor(props) {
-      super(props);     
-  }
+    constructor(props) {
+        super(props);     
+        window.localStorage.setItem(key, value);
+        this.storeToken()
+    }
 
+    verifyTokenLogin = () => {
+        var str = document.location.hash;
+        var res = str.split("&");
+        var res2 = res[0].split("=");
+
+        var token = window.localStorage.getItem('twtkn') || res2;
+
+        axios.get("https://id.twitch.tv/oauth2/validate", {
+                headers: {
+                    'Authorization': "OAuth  " + token
+                }
+            }).then(response => {
+                // If request is good...
+                console.log(response.data.status);
+            })
+            .catch((error) => {
+                console.log('error 3 ' + error);
+            });
+    }
+
+    storeToken = () => {
+       var str = document.location.hash;
+       var res = str.split("&");
+       var res2 = res[0].split("=");
+
+       window.localStorage.setItem('twtkn', res2);
+
+   }
   render() {
 
     return (

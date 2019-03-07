@@ -11,14 +11,14 @@ class Followers extends Component {
 
   constructor(props) {
     super(props);
-    subscribeToTimer((err, newfollow) => this.setState(state => {
+
+     subscribeToWebhooker((err, newfollow) => this.setState(state => {
         const followersNew = [...state.followers, newfollow];
         let followers = followersNew;
         if (followersNew.length > 10)
         {
           followers = followersNew.slice(followersNew.length - 10);
-        }         
-        
+        }        
         return {
           followers
         };

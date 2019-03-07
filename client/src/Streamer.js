@@ -17,7 +17,6 @@ class Streamer extends Component {
     intervalIsSet: false,
     streamer:'',
     streamerId:0,
-    teste: 'no timestamp yet',
     showStream: false,
     textButton: "Let's Watch"
   };
@@ -25,9 +24,12 @@ class Streamer extends Component {
   constructor(props) {
     super(props);
 
+    this.verifyTokenLogin();
+
     this.handleChange = this.handleChange.bind(this);
 
     this.unsubscribeAllWebhook();
+
   }
 
   // when component mounts, first thing it does is fetch all existing data in our db
@@ -164,6 +166,8 @@ class Streamer extends Component {
    unsubscribeAllWebhook = () => {
       this.getTokenSubscribe();
    }
+
+
 
 
   // here is our UI

@@ -29,9 +29,9 @@ class Streamer extends Component {
     this.handleChange = this.handleChange.bind(this);
 
     this.unsubscribeAllWebhook();
-    this.storeToken();
+   // this.storeToken();
 
-    this.verifyTokenLogin();
+   // this.verifyTokenLogin();
 
   }
 

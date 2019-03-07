@@ -24,11 +24,10 @@ class Streamer extends Component {
 
   constructor(props) {
     super(props);
-    subscribeToTimer((err, teste) => this.setState({
-      teste
-    }));
 
     this.handleChange = this.handleChange.bind(this);
+
+    this.unsubscribeAllWebhook();
   }
 
   // when component mounts, first thing it does is fetch all existing data in our db
@@ -99,9 +98,39 @@ class Streamer extends Component {
   }
 
   getTokenSubscribe = () => {
-        axios.post("https://id.twitch.tv/oauth2/token?client_id=" + CLIENTID+"&client_secret="+CLIENTSECRET+"&grant_type=client_credentials", {}).then(response => {
+          axios.post("https://id.twitch.tv/oauth2/token?client_id=" + CLIENTID+"&client_secret="+CLIENTSECRET+"&grant_type=client_credentials", {}).then(response => {
             // If request is good...
             console.log(response.data.access_token);
+                axios.get("https://api.twitch.tv/helix/webhooks/subscriptions", {
+                    headers: {
+                      'Authorization': "bearer " + response.data.access_token
+                    }
+                  }).then(response => {
+                    // If request is good...
+                    var headers = {
+                      'Content-Type': 'application/json',
+                      'Client-ID': CLIENTID
+                    }
+                    response.data.data.forEach(element => {
+                      axios.post("https://api.twitch.tv/helix/webhooks/hub", {
+                          'hub.callback': element.callback,
+                          'hub.mode': 'unsubscribe',
+                          'hub.topic': element.topic
+                        }, {
+                          headers: headers
+                        }).then(response => {
+                          // If request is good...
+                          console.log(response.data);
+                        })
+                        .catch((error) => {
+                          console.log('error 3 ' + error);
+                        });                      
+                    });
+                  })
+                  .catch((error) => {
+                    console.log('error 3 ' + error);
+                  });
+            
           })
           .catch((error) => {
             console.log('error 3 ' + error);
@@ -134,6 +163,9 @@ class Streamer extends Component {
        });
    }
 
+   unsubscribeAllWebhook = () => {
+      
+   }
 
 
   // here is our UI

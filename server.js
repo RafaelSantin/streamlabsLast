@@ -71,7 +71,7 @@ router.delete("/deleteData", (req, res) => {
 // this is our create methid
 // this method adds new data in our database
 router.post("/webhook", (req, res) => {
-        var javascriptObject = res;
+        var javascriptObject = 'oiiii';
 
         io.emit("someName", javascriptObject);
         res.send({

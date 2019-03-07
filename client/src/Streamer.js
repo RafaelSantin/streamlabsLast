@@ -82,7 +82,7 @@ class Streamer extends Component {
   getTwitchUserId = () => {
     axios.get("https://api.twitch.tv/helix/users?login=" + this.state.streamer, {
         headers: {
-          'Client-ID': this.CLIENTID
+          'Client-ID': CLIENTID
         }
       }).then(response => {
         // If request is good...
@@ -107,7 +107,7 @@ class Streamer extends Component {
   setWebhookSubscribe = () => {
         var headers = {
           'Content-Type': 'application/json',
-          'Client-ID': this.CLIENTEID
+          'Client-ID': CLIENTID
         }
         axios.post("https://api.twitch.tv/helix/webhooks/hub", 
         {

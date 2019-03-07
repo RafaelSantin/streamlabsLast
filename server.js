@@ -88,7 +88,7 @@ router.post("/webhook", (req, res) => {
 //     });
 // });
 
-router.get('/webhook', expressServer.module.json(), function(req, res){
+router.get('/webhook', (req, res) => {
     res.send(req.query['hub.challenge'])
 })
 

@@ -71,42 +71,26 @@ router.delete("/deleteData", (req, res) => {
 // this is our create methid
 // this method adds new data in our database
 router.post("/webhook", (req, res) => {
-        var javascriptObject = 'oiii';
+        var javascriptObject = res;
 
         io.emit("someName", javascriptObject);
         res.send({
             test: "Some message"
         });
-
-        // io.on('connection', (client) => {
-        //     client.on('subscribeToTimer', (interval) => {
-        //         console.log('client is subscribing to timer with interval ', interval);
-             
-        //             client.emit('timer', new Date());
-               
-        //     });
-        // });
-        // return res.json({
-        //     success: true
-        // });
-
-    // let data = new Data();
-
-    // const { id, message } = req.body;
-
-    // if ((!id && id !== 0) || !message) {
-    //     return res.json({
-    //         success: false,
-    //         error: "INVALID INPUTS"
-    //     });
-    // }
-    // data.message = message;
-    // data.id = id;
-    // data.save(err => {
-    //     if (err) return res.json({ success: false, error: err });
-    //     return res.json({ success: true });
-    // });
 });
+
+// router.get("/webhook", (req, res) => {
+//     var javascriptObject = 'oiii';
+
+//     io.emit("someName", javascriptObject);
+//     res.send({
+//         test: "Some message"
+//     });
+// });
+
+router.get('/webhook', expressServer.module.json(), function(req, res){
+    res.send(req.query['hub.challenge'])
+})
 
 // append /api for our http requests
 app.use("/api", router);

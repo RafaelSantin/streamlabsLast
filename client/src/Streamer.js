@@ -110,7 +110,7 @@ class Streamer extends Component {
         }
         axios.post("https://api.twitch.tv/helix/webhooks/hub", 
         {
-          'hub.callback':  'localhost:3001/api/putData',
+          'hub.callback':  'https://streamlabslast.herokuapp.com/api/webhook',
           'hub.mode': 'subscribe',
           'hub.topic': 'https://api.twitch.tv/helix/users/follows?first=10&to_id='+this.state.streamerId,
           'hub.lease_seconds': '864000'

@@ -1,43 +1,13 @@
 // /client/App.js
 import React, { Component } from "react";
-import axios from "axios";
+
 
 class Header extends Component {
     constructor(props) {
-        super(props);     
-        this.storeToken();
-        this.verifyTokenLogin();
+        super(props);         
     }
 
-    verifyTokenLogin = () => {
-        var str = document.location.hash;
-        var res = str.split("&");
-        var res2 = res[0].split("=");
-
-        var token = window.localStorage.getItem('twtkn') || res2;
-
-        axios.get("https://id.twitch.tv/oauth2/validate", {
-                headers: {
-                    'Authorization': "OAuth  " + token
-                }
-            }).then(response => {
-                // If request is good...
-                console.log(response.data.status);
-            })
-            .catch((error) => {
-                window.location = '/';
-                console.log('error 3 ' + error);
-            });
-    }
-
-    storeToken = () => {
-       var str = document.location.hash;
-       var res = str.split("&");
-       var res2 = res[0].split("=");
-
-       window.localStorage.setItem('twtkn', res2);
-
-   }
+    
   render() {
 
     return (

@@ -1,5 +1,6 @@
 // /client/App.js
 import React, { Component } from "react";
+import axios from "axios";
 
 
 class LoginTwitch extends Component {
@@ -10,9 +11,29 @@ class LoginTwitch extends Component {
 
   constructor(props) {
     super(props);
+    this.verifyTokenLogin();
   }
 
+  verifyTokenLogin = () => {
+    var str = document.location.hash;
+    var res = str.split("&");
+    var res2 = res[0].split("=");
 
+    var token = window.localStorage.getItem('twtkn') || res2;
+
+    axios.get("https://id.twitch.tv/oauth2/validate", {
+        headers: {
+          'Authorization': "OAuth  " + token
+        }
+      }).then(response => {
+        window.location = '/streamer';
+        console.log(response.data.status);
+      })
+      .catch((error) => {
+       
+        console.log('error 3 ' + error);
+      });
+  }
 
   // here is our UI
   // it is easy to understand their functions when you 

@@ -28,8 +28,8 @@ myEmitter.on('subscribeToTimer', function (a, b) {
 
 // (optional) only made for logging and
 // bodyParser, parses the request body to be a readable json format
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
+ app.use(bodyParser.urlencoded({ extended: false }));
+ app.use(bodyParser.json());
 // app.use(logger("dev"));
 app.use(express.static(path.join(__dirname, 'client/build')));
 

@@ -75,9 +75,6 @@ router.post("/webhook", (req, res) => {
         var javascriptObject = req.body;
 
         io.emit("someName", javascriptObject);
-        res.send({
-            test: "Some message"
-        });
 });
 
 // router.get("/webhook", (req, res) => {

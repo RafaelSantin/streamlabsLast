@@ -76,7 +76,7 @@ class Streamer extends Component {
         this.setState({textButton: 'Watching'});
         this.getTwitchUserId();
         this.getTokenSubscribe();
-        this.setWebhookSubscribe();
+        
       }
   }
 
@@ -87,8 +87,11 @@ class Streamer extends Component {
         }
       }).then(response => {
         // If request is good...
+        
         console.log(response.data.data[0].id);
         this.setState({streamerId: response.data.data[0].id});
+
+        this.setWebhookSubscribe();
       })
       .catch((error) => {
         console.log('error 3 ' + error);

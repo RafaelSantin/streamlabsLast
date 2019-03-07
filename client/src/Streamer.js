@@ -101,24 +101,24 @@ class Streamer extends Component {
             console.log(response.data.access_token);
                 axios.get("https://api.twitch.tv/helix/webhooks/subscriptions", {
                     headers: {
-                      'Authorization': "bearer " + response.data.access_token
+                      'Authorization': "Bearer " + response.data.access_token
                     }
-                  }).then(response => {
+                  }).then(respone => {
                     // If request is good...
                     var headers = {
                       'Content-Type': 'application/json',
                       'Client-ID': CLIENTID
                     }
-                    response.data.data.forEach(element => {
+                    respone.data.data.forEach(element => {
                       axios.post("https://api.twitch.tv/helix/webhooks/hub", {
                           'hub.callback': element.callback,
                           'hub.mode': 'unsubscribe',
                           'hub.topic': element.topic
                         }, {
                           headers: headers
-                        }).then(response => {
+                        }).then(resptwo => {
                           // If request is good...
-                          console.log(response.data);
+                          console.log(resptwo.data);
                         })
                         .catch((error) => {
                           console.log('error 3 ' + error);

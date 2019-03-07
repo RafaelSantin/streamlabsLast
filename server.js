@@ -3,13 +3,13 @@ const bodyParser = require("body-parser");
 const logger = require("morgan");
 const path = require('path');
 
-const API_PORT = 5000;
+const API_PORT = process.env.PORT || 5000;
 const app = express();
 const router = express.Router();
 
 const io = require('socket.io')();
 
-io.listen(3002);
+// io.listen(3002);
 
 const EventEmitter = require('events');
 class MyEmitter extends EventEmitter {}

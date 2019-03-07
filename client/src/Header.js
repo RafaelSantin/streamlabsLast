@@ -5,7 +5,6 @@ import React, { Component } from "react";
 class Header extends Component {
     constructor(props) {
         super(props);     
-        window.localStorage.setItem(key, value);
         this.storeToken()
     }
 

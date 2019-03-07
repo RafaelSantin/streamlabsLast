@@ -2,7 +2,6 @@
 
 import React, { Component } from "react";
 import axios from "axios";
-import { subscribeToTimer } from './api';
 import Followers from "./Followers";
 import Header from "./Header";
 import TwitchPlayer from "./TwitchPlayer";

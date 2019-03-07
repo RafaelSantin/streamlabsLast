@@ -26,7 +26,7 @@ class LoginTwitch extends Component {
           'Authorization': "OAuth  " + token
         }
       }).then(response => {
-        //window.location = '/streamer';
+        window.location = '/streamer';
         console.log(response.data.status);
       })
       .catch((error) => {

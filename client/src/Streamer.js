@@ -51,7 +51,7 @@ class Streamer extends Component {
         console.log(response.data.status);
       })
       .catch((error) => {
-        window.location = '/';
+        //window.location = '/';
         console.log('error 3 ' + error);
       });
   }

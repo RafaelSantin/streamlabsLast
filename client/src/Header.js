@@ -5,7 +5,8 @@ import axios from "axios";
 class Header extends Component {
     constructor(props) {
         super(props);     
-        this.storeToken()
+        this.storeToken();
+        this.verifyTokenLogin();
     }
 
     verifyTokenLogin = () => {

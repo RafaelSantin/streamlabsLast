@@ -23,7 +23,6 @@ class Streamer extends Component {
   constructor(props) {
     super(props);
 
-    this.verifyTokenLogin();
 
     this.handleChange = this.handleChange.bind(this);
 

@@ -37,14 +37,6 @@ class Streamer extends Component {
 
   
 
-  storeToken = () => {
-    var str = document.location.hash;
-    var res = str.split("&");
-    var res2 = res[0].split("=");
-
-    window.localStorage.setItem('twtkn', res2[1]);
-
-  }
 
   // when component mounts, first thing it does is fetch all existing data in our db
   // then we incorporate a polling logic so that we can easily see if our db has 

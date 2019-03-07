@@ -22,7 +22,7 @@ class LoginTwitch extends Component {
     return (
       <a type="button" className="btn btn-success"
             href = {
-                "https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=" + this.state.clientKey + "&redirect_uri=http://localhost:3000/streamer&scope=viewing_activity_read"
+                "https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=" + this.state.clientKey + "&redirect_uri=https://streamlabslast.herokuapp.com/streamer&scope=viewing_activity_read"
             } >
           Twitch Login
       </a>

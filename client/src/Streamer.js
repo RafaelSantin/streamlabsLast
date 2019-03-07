@@ -117,7 +117,7 @@ class Streamer extends Component {
         {
           'hub.callback':  'https://streamlabslast.herokuapp.com/api/webhook',
           'hub.mode': 'subscribe',
-          'hub.topic': 'https://api.twitch.tv/helix/users/follows?first=10&to_id='+this.state.streamerId,
+          'hub.topic': 'https://api.twitch.tv/helix/users/follows?first=1&to_id='+this.state.streamerId,
           'hub.lease_seconds': '864000'
         }, {headers: headers}).then(response => {
             // If request is good...

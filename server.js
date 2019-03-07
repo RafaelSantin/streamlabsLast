@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const logger = require("morgan");
 const path = require('path');
 
-const API_PORT = 3001;
+const API_PORT = 5000;
 const app = express();
 const router = express.Router();
 

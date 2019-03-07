@@ -73,9 +73,7 @@ class Streamer extends Component {
       }else{
         this.setState({showStream:true});
         this.setState({textButton: 'Watching'});
-        this.getTwitchUserId();
-        this.getTokenSubscribe();
-        
+        this.getTwitchUserId();       
       }
   }
 
@@ -164,7 +162,7 @@ class Streamer extends Component {
    }
 
    unsubscribeAllWebhook = () => {
-      
+      this.getTokenSubscribe();
    }
 
 

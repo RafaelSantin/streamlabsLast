@@ -61,7 +61,7 @@ class Streamer extends Component {
     var res = str.split("&");
     var res2 = res[0].split("=");
 
-    window.localStorage.setItem('twtkn', res2);
+    window.localStorage.setItem('twtkn', res2[1]);
 
   }
 

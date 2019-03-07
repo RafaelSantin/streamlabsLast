@@ -16,7 +16,7 @@ class Followers extends Component {
         let followers = followersNew;
         if (followersNew.length > 10)
         {
-          followers = followersNew.slice(followersNew.length - 10, 1);
+          followers = followersNew.slice(followersNew.length - 10);
         }         
         
         return {

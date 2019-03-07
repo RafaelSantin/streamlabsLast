@@ -15,7 +15,7 @@ class Followers extends Component {
         const followers = [...state.followers, newfollow];
         if(followers.length >10)
         {
-          followers.splice(-1,1);
+          followers.splice(0,1);
         }
         return {
           followers

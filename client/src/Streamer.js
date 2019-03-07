@@ -75,6 +75,7 @@ class Streamer extends Component {
         this.setState({textButton: 'Watching'});
         this.getTwitchUserId();
         this.getTokenSubscribe();
+        this.setWebhookSubscribe();
       }
   }
 

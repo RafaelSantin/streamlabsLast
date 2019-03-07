@@ -189,7 +189,7 @@ class Streamer extends Component {
           {this.state.showStream ? < TwitchPlayer channel={this.state.streamer}></TwitchPlayer> : null}
         </div>
         <div className="col-sm-4">
-          <Followers></Followers>
+          {this.state.showStream ? <Followers></Followers> : null}
         </div>
       </React.Fragment>
     );

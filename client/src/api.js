@@ -3,7 +3,7 @@ const socket = openSocket('https://streamlabslast.herokuapp.com/');
 
 function subscribeToTimer(cb) {    
     //console.log(cb);
-    socket.on('someName', teste => cb(null, teste))
+    socket.on('getfollowers', newfollow => cb(null, newfollow))
 }
 export {
     subscribeToTimer

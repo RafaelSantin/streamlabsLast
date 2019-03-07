@@ -6,14 +6,22 @@ import { subscribeToTimer } from './api';
 class Followers extends Component {
   // initialize our state 
   state = {
-    teste: 'no timestamp yet',
+    followers: [],
   };
 
   constructor(props) {
     super(props);
-    subscribeToTimer((err, teste) => this.setState({
-      teste
-    }));
+    subscribeToTimer((err, newfollow) => this.setState(state => {
+        const followers = [...state.followers, newfollow];
+        if(followers.length >10)
+        {
+          followers.splice(-1,1);
+        }
+        return {
+          followers
+        };
+      })
+    )
   }
 
 
@@ -24,13 +32,13 @@ class Followers extends Component {
   render() {
     const { data } = this.state;
     return (
-
-      <p className="App-intro">
-      This is the timer value lalala: {
-        this.state.teste
-      }
-      </p>
-
+      <div>
+        <ul>
+          {this.state.followers.map(item => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </div> 
     );
   }
 }

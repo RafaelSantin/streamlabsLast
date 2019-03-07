@@ -72,9 +72,9 @@ router.delete("/deleteData", (req, res) => {
 // this method adds new data in our database
 router.post("/webhook", (req, res) => {
     console.log(req.body);
-        var javascriptObject = req.body.data[0].from_name + ' is Following';
+        var javascriptObject = req.body.data[0].from_name + ' is Following ' + req.body.data[0].to_name;
 
-        io.emit("someName", javascriptObject);
+        io.emit("getfollowers", javascriptObject);
 });
 
 // router.get("/webhook", (req, res) => {

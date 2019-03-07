@@ -7,7 +7,7 @@ const API_PORT = process.env.PORT || 5000;
 const app = express();
 const router = express.Router();
 
-const io = require('socket.io')();
+//const io = require('socket.io')();
 
 // io.listen(3002);
 

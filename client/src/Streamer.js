@@ -174,7 +174,7 @@ class Streamer extends Component {
     return (
       <React.Fragment>
         <Header/>
-        <Followers></Followers>
+        
         < div className = "col-sm-12" >
           <div className="col-sm-3">
             <input type="text" className="form-control" name="streamer" value={this.state.streamer} onChange={this.handleChange}></input>
@@ -185,6 +185,9 @@ class Streamer extends Component {
         </div>
         <div className="col-sm-8">
           {this.state.showStream ? < TwitchPlayer channel={this.state.streamer}></TwitchPlayer> : null}
+        </div>
+        <div className="col-sm-4">
+          <Followers></Followers>
         </div>
       </React.Fragment>
     );

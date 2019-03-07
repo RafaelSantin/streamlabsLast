@@ -12,11 +12,10 @@ class Followers extends Component {
   constructor(props) {
     super(props);
     subscribeToTimer((err, newfollow) => this.setState(state => {
-        const followers = [...state.followers, newfollow];
-        if(followers.length >10)
-        {
-          followers.splice(0,1);
-        }
+        const followersNew = state.followers.unshift(newfollow);
+        
+        const followers = followersNew.splice(0, 10);
+        
         return {
           followers
         };

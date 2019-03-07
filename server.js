@@ -7,69 +7,11 @@ const API_PORT = process.env.PORT || 5000;
 const app = express();
 const router = express.Router();
 
-//const io = require('socket.io')();
-
-// io.listen(3002);
-
-const EventEmitter = require('events');
-class MyEmitter extends EventEmitter {}
-const myEmitter = new MyEmitter();
-// myEmitter.on('subscribeToTimer', function (a, b) {
-//     io.on('connection', (client) => {
-//         client.on('subscribeToTimer', (interval) => {
-//             console.log('client is subscribing to timer with interval ', interval);
-
-//                 client.emit('timer', new Date());
-
-//         });
-//     });
-// });
-
-
-// (optional) only made for logging and
-// bodyParser, parses the request body to be a readable json format
- app.use(bodyParser.urlencoded({ extended: false }));
- app.use(bodyParser.json());
-// app.use(logger("dev"));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 
-
-// this is our get method
-// this method fetches all available data in our database
-router.get("/api/teste", (req, res) => {
-    return res.json({
-        success: true,
-        data: data
-    });
-    // Data.find((err, data) => {
-    //     if (err) return res.json({ success: false, error: err });
-    //     return res.json({ success: true, data: data });
-    // });
-});
-
-// this is our update method
-// this method overwrites existing data in our database
-router.post("/updateData", (req, res) => {
-    // const { id, update } = req.body;
-    // Data.findOneAndUpdate(id, update, err => {
-    //     if (err) return res.json({ success: false, error: err });
-    //     return res.json({ success: true });
-    // });
-});
-
-// this is our delete method
-// this method removes existing data in our database
-router.delete("/deleteData", (req, res) => {
-    // const { id } = req.body;
-    // Data.findOneAndDelete(id, err => {
-    //     if (err) return res.send(err);
-    //     return res.json({ success: true });
-    // });
-});
-
-// this is our create methid
-// this method adds new data in our database
 router.post("/webhook", (req, res) => {
     console.log(req.body);
         var javascriptObject = req.body.data[0].from_name + ' is Following ' + req.body.data[0].to_name;
@@ -77,20 +19,11 @@ router.post("/webhook", (req, res) => {
         io.emit("getfollowers", javascriptObject);
 });
 
-// router.get("/webhook", (req, res) => {
-//     var javascriptObject = 'oiii';
-
-//     io.emit("someName", javascriptObject);
-//     res.send({
-//         test: "Some message"
-//     });
-// });
-
 router.get('/webhook', (req, res) => {
     res.send(req.query['hub.challenge'])
 })
 
-// append /api for our http requests
+
 app.use("/api", router);
 
 app.get('*', (req, res) => {

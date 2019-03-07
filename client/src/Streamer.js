@@ -10,7 +10,7 @@ const CLIENTID = 'qq9u2sryddlwz8uj59zsajuonbplr5';
 const CLIENTSECRET = 'yi5et88qjhe66ctav7ohweguthaann';
 
 class Streamer extends Component {
-  // initialize our state 
+
   state = {
     data: [],
     intervalIsSet: false,
@@ -32,23 +32,8 @@ class Streamer extends Component {
     this.verifyTokenLogin();
   }
 
-  // when component mounts, first thing it does is fetch all existing data in our db
-  // then we incorporate a polling logic so that we can easily see if our db has 
-  // changed and implement those changes into our UI
-  componentDidMount() {
-    if (!this.state.intervalIsSet) {
-      // let interval = setInterval(this.getDataFromDb, 1000);
-      // this.setState({ intervalIsSet: interval });
-    }
-  }
-
-  // never let a process live forever 
-  // always kill a process everytime we are done using it
   componentWillUnmount() {
-    if (this.state.intervalIsSet) {
-      clearInterval(this.state.intervalIsSet);
-      this.setState({ intervalIsSet: null });
-    }
+    this.unsubscribeAllWebhook();
   }
 
   
@@ -185,9 +170,7 @@ class Streamer extends Component {
    }
 
 
-  // here is our UI
-  // it is easy to understand their functions when you 
-  // see them render into our screen
+
   render() {
     const { data } = this.state;
     return (

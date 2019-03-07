@@ -35,9 +35,6 @@ class LoginTwitch extends Component {
       });
   }
 
-  // here is our UI
-  // it is easy to understand their functions when you 
-  // see them render into our screen
   render() {
 
     return (

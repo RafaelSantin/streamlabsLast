@@ -11,7 +11,6 @@ class Header extends Component {
   render() {
 
     return (
-
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a className="navbar-brand" href="#"><img className="twitch-icon-header" src={process.env.PUBLIC_URL + '/twitch.png'}/></a>
@@ -28,8 +27,7 @@ class Header extends Component {
                     </ul>                    
                 </div>
             </nav>     
-        </div>    
-
+        </div> 
     );
   }
 }

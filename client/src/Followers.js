@@ -1,6 +1,6 @@
 // /client/App.js
 import React, { Component } from "react";
-import { subscribeToTimer } from './api';
+import { subscribeToWebhooker } from './api';
 
 
 class Followers extends Component {

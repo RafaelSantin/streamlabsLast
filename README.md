@@ -15,3 +15,6 @@ I did the project in nodeJs and reactJs, although I'm not expert on these tecnol
 
  - Where do you see bottlenecks in your proposed architecture and how would you approach scaling this app starting from 100 reqs/day to 900MM reqs/day over 6 months?
     I guess that the listen parte will be a bottleneck because of the how much events will be triggered from all the people that is watching. Sorry but now a days I don't have so much experience to propose a architecture to solve this scaling problem.
+
+# bug to report
+    - when the streamer is changed I unsubscribe the webhook, but twitch continue sending the post to the callback some more seconds, so it will be normal to se followers from another channel if you change the streamer quickly, as I took so much time to make this system I will fix this bug latter.

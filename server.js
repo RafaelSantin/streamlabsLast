@@ -14,16 +14,16 @@ const router = express.Router();
 const EventEmitter = require('events');
 class MyEmitter extends EventEmitter {}
 const myEmitter = new MyEmitter();
-myEmitter.on('subscribeToTimer', function (a, b) {
-    io.on('connection', (client) => {
-        client.on('subscribeToTimer', (interval) => {
-            console.log('client is subscribing to timer with interval ', interval);
+// myEmitter.on('subscribeToTimer', function (a, b) {
+//     io.on('connection', (client) => {
+//         client.on('subscribeToTimer', (interval) => {
+//             console.log('client is subscribing to timer with interval ', interval);
 
-                client.emit('timer', new Date());
+//                 client.emit('timer', new Date());
 
-        });
-    });
-});
+//         });
+//     });
+// });
 
 
 // (optional) only made for logging and

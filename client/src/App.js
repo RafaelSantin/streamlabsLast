@@ -2,7 +2,6 @@
 
 import React, { Component } from "react";
 import axios from "axios";
-import { subscribeToTimer } from './api';
 import LoginTwitch from "./LoginTwitch";
 import Header from "./Header";
 
@@ -17,9 +16,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    subscribeToTimer((err, teste) => this.setState({
-      teste
-    }));
+
   }
 
   // when component mounts, first thing it does is fetch all existing data in our db

@@ -25,6 +25,7 @@ class Header extends Component {
                 console.log(response.data.status);
             })
             .catch((error) => {
+                window.location = '/';
                 console.log('error 3 ' + error);
             });
     }

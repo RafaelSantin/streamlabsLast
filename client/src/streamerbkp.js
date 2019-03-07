@@ -2,6 +2,7 @@
 
 import React, { Component } from "react";
 import axios from "axios";
+import { subscribeToTimer } from './api';
 import Followers from "./Followers";
 import Header from "./Header";
 import TwitchPlayer from "./TwitchPlayer";
@@ -27,9 +28,6 @@ class Streamer extends Component {
     this.handleChange = this.handleChange.bind(this);
 
     this.unsubscribeAllWebhook();
-    this.storeToken();
-
-    this.verifyTokenLogin();
   }
 
   // when component mounts, first thing it does is fetch all existing data in our db
@@ -53,35 +51,20 @@ class Streamer extends Component {
 
   
 
-  verifyTokenLogin = () => {
-    var str = document.location.hash;
-    var res = str.split("&");
-    var res2 = res[0].split("=");
+  // our put method that uses our backend api
+  // to create new query into our data base
+  putDataToDB = message => {
+    let currentIds = this.state.data.map(data => data.id);
+    let idToBeAdded = 0;
+    while (currentIds.includes(idToBeAdded)) {
+      ++idToBeAdded;
+    }
 
-    var token = window.localStorage.getItem('twtkn') || res2;
-
-    axios.get("https://id.twitch.tv/oauth2/validate", {
-        headers: {
-          'Authorization': "OAuth " + token
-        }
-      }).then(response => {
-        // If request is good...
-        console.log(response.data.status);
-      })
-      .catch((error) => {
-        //window.location = '/';
-        console.log('error 3 ' + error);
-      });
-  }
-
-  storeToken = () => {
-    var str = document.location.hash;
-    var res = str.split("&");
-    var res2 = res[0].split("=");
-
-    window.localStorage.setItem('twtkn', res2[1]);
-
-  }
+    axios.post("http://localhost:3001/api/putData", {
+      id: idToBeAdded,
+      message: message
+    });
+  };
 
   showStreamHandle = () => {
       if(this.state.streamer == '')

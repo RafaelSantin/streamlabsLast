@@ -44,7 +44,7 @@ class Streamer extends Component {
 
     axios.get("https://id.twitch.tv/oauth2/validate", {
         headers: {
-          'Authorization': "OAuth  " + token
+          'Authorization': "OAuth " + token
         }
       }).then(response => {
         // If request is good...
